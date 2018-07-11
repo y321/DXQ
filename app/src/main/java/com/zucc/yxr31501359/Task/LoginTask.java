@@ -8,10 +8,10 @@ import com.zucc.yxr31501359.DBService.UserService;
 import com.zucc.yxr31501359.ICallback.ICallBack;
 import com.zucc.yxr31501359.entity.Users;
 
-public  class UsersTask extends AsyncTask<Users, Integer, String> {
+public  class LoginTask extends AsyncTask<Users, Integer, String> {
     private SQLiteDatabase db;
     private ICallBack mCallback ;
-    public UsersTask(SQLiteDatabase db,ICallBack cb){
+    public LoginTask(SQLiteDatabase db,ICallBack cb){
         this.mCallback = cb;
         this.db=db;
     }
@@ -28,7 +28,7 @@ public  class UsersTask extends AsyncTask<Users, Integer, String> {
     protected String doInBackground(Users... users) {
         UserService userService = new UserService(db);
 
-        String res = userService.register(users[0]);
+        String res = userService.login(users[0]);
         //Log.d("WeatherTask", res);
         return res;
     }

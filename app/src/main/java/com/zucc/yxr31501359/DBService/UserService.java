@@ -14,10 +14,10 @@ public class UserService {
 
 
     //登录用
-    public String login(String username,String password){
+    public String login(Users users){
 
-        String sql="select * from user where username=? and password=?";
-        Cursor cursor=sdb.rawQuery(sql, new String[]{username,password});
+        String sql="select * from users where username=? and password=?";
+        Cursor cursor=sdb.rawQuery(sql, new String[]{users.getUsername(),users.getPassword()});
         if(cursor.moveToFirst()==true){
             cursor.close();
             return "login successful";
@@ -26,8 +26,14 @@ public class UserService {
     }
     //注册用
     public String register(Users users){
+        String sql="select * from users where username=? ";
+        Cursor c=sdb.rawQuery(sql, new String[]{users.getUsername()});
+        if(c.getCount()!=0){
+            return "用户名已存在！";
+        }
 
-        String sql="insert into users(username,password) values(?,?)";
+
+         sql="insert into users(username,password) values(?,?)";
         Object obj[]={users.getUsername(),users.getPassword()};
         sdb.execSQL(sql, obj);
 
