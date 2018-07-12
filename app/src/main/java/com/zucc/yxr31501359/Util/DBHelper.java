@@ -18,6 +18,8 @@ public class DBHelper extends SQLiteOpenHelper {
         String sql="create table users(Uid integer primary key autoincrement,username varchar(20),password varchar(20),age integer,sex varchar(2),del varchar(2),remarks varchar(2))";
         db.execSQL(sql);
 
+        sql="create table rc(rcid integer primary key autoincrement,title varchar(50),place varchar(100),startTime data,endTime data,repeat varchar(50),remindTime Data,remarks varchar(2),status varchar(10) ,del varchar(10),uid integer)";
+        db.execSQL(sql);
     }
 
     @Override

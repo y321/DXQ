@@ -65,6 +65,9 @@ public class LoginActivity extends AppCompatActivity implements ICallBack {
                    users.setPassword(password_Login.getText().toString());
                    LoginTask loginTask = new LoginTask(db,LoginActivity.this);
                    loginTask.execute(users);
+                    Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+                    //启动
+                    startActivity(intent);
                     finish();
                 }
             }

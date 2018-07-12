@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".Activity.RegActivity">
         </activity>
+        <activity android:name=".Activity.RcActivity">
+        </activity>
     </application>
 
 </manifest>
