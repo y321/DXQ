@@ -65,9 +65,7 @@ public class LoginActivity extends AppCompatActivity implements ICallBack {
                    users.setPassword(password_Login.getText().toString());
                    LoginTask loginTask = new LoginTask(db,LoginActivity.this);
                    loginTask.execute(users);
-                    Intent intent =new Intent(LoginActivity.this,MainActivity.class);
-                    //启动
-                    startActivity(intent);
+
                     finish();
                 }
             }
@@ -76,6 +74,17 @@ public class LoginActivity extends AppCompatActivity implements ICallBack {
 
     @Override
     public void onFinished(String result) {
-        Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
+        if(result.equals("login fail")){
+            Toast.makeText(LoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+            Intent intent =new Intent(LoginActivity.this,LoginActivity.class);
+            //启动
+            startActivity(intent);
+        }else {
+            Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
+            Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+            //启动
+            startActivity(intent);
+        }
+
     }
 }
